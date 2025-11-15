@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+    * {
+      color: white;
+      font-family: Roboto;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    body,
+    html {
+      background-color: rgb(26, 26, 26);
+    }
+
+    .title {
+      margin-bottom: 15px;
+    }
+
+    .title h1 {
+      font-size: 50px;
+      margin-bottom: 5px;
+    }
+
+    .about {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .form {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    input {
+      background-color: gray;
+      border: none;
+      border-radius: 2.5px;
+    }
+
+    .inputbutton {
+      width: 75px;
+      height: 25px;
+      transition: all 0.15s;
+    }
+
+    .inputbutton:hover {
+      background-color: rgb(54, 54, 54);
+    }
+
+    .inputbutton:active {
+      background-color: white;
+      color: gray;
+    }
+
+    img {
+      margin-top: 15px;
+      width: 750px;
+    }
+  </style>
+  <body>
+    <div class="title">
+      <h1>SquadSquare</h1>
+      <p>A private four square club. This is the offical website.</p>
+    </div>
+    <hr width="50%" style="margin: auto" />
+    <div class="about">
+      <h2>About SquadSquare</h2>
+      <p>
+        SquadSquare is a <strong>private</strong> four square club. The reason
+        why I made this is because people are constantly arguing about rules and
+        some people are playing when the shouldnt be, some people are reffing
+        when they shouldnt be, and its overall nicer just to have a private
+        square where we can do everything/anything we want
+      </p>
+    </div>
+    <hr width="50%" style="margin: auto" />
+    <div class="form">
+      <p id="alrloggedin" style="font-weight: bold; display: none">
+        Already logged in! <a href="home.html">Go to Home</a>
+      </p>
+
+      <form id="loginForm" onsubmit="return login()">
+        <label>Username:</label><br />
+        <input type="text" id="username" /><br />
+        <label>Password:</label><br />
+        <input type="password" id="password" /><br /><br />
+        <input type="submit" class="inputbutton" value="Login" />
+      </form>
+    </div>
+    <hr width="75%" style="margin: auto" />
+    <img src="4square.jpg" alt="People playing four square." />
+
+    <script>
+      fetch("information.json")
+        .then((r) => r.json())
+        .then((db) => localStorage.setItem("usersDB", JSON.stringify(db)));
+
+      if (localStorage.getItem("loggedIn") === "true") {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("alrloggedin").style.display = "block";
+      }
+
+      function login() {
+        const user = document.getElementById("username").value.trim();
+        const pass = document.getElementById("password").value;
+
+        const users = JSON.parse(localStorage.getItem("usersDB"));
+
+        if (users[user] && users[user].password === pass) {
+          localStorage.setItem("loggedIn", "true");
+          localStorage.setItem("username", user);
+          window.location.href = "home.html";
+        } else {
+          alert("Invalid login");
+        }
+        return false;
+      }
+    </script>
+  </body>
+</html>

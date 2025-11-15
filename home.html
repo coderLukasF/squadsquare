@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+    * {
+      color: white;
+      font-family: Roboto;
+    }
+
+    body,
+    html {
+      background-color: rgb(26, 26, 26);
+    }
+
+    a {
+      color: lightblue;
+    }
+  </style>
+  <body>
+    <h1 id="welcome"></h1>
+    <p id="coins"></p>
+    <p id="ranks"></p>
+    <hr width="50%" style="margin: 0" />
+    <div class="tournaments">
+      <h1>Tournaments</h1>
+      <h2>Tournament 1A is starting soon. More info below.</h2>
+      <p>
+        Tournament 1A is the first SquadSquare tournament. It is a 2v2
+        tournament managed by our TM: Lukas. <br /><strong
+          >The date is still being decided.</strong
+        >
+      </p>
+      <h2>Prizes for Tournament 1A</h2>
+      <ul>
+        <li>1st place: 50 SquadPoints</li>
+        <li>2nd place: 30 SquadPoints</li>
+        <li>3rd place: 15 SquadPoints</li>
+      </ul>
+    </div>
+    <hr width="50%" style="margin: 0" />
+    <div class="promotionguide">
+      <h1>Promotion guide.</h1>
+      <p>
+        If you would like to be promoted to a certain rank, let me know via this
+        form! Someone from the promotion team will review your response and get
+        back to you about if you can actually get this rank or not, if you can
+        get this rank then our promotion team will study what you do and
+        eventually you will hopefully get promoted to that rank!<br />
+        <strong
+          >BIG THING: Do NOT say "I deserve to be promoted", or "When will I get
+          promoted?". This is called hinting. We decide if and when you get a
+          promotion. <br style="margin: 15px" />TIP: If you want to become a
+          higher rank of a normal one, ex: Player -> Head player you should do
+          your job as your rank but better. Show us that you are capable and
+          advanced. Its like going from an A to an A+. Thats the best way to get
+          a promotion.</strong
+        >
+      </p>
+    </div>
+    <hr width="50%" style="margin: 0" />
+    <div class="links">
+      <h1>Links</h1>
+      <ul>
+        <li><a href="docs.google.com">Rules</a></li>
+        <li><a href="docs.google.com">A</a></li>
+      </ul>
+    </div>
+    <hr width="50%" style="margin: 0" />
+    <div class="promotion">
+      <h1>Promotions!</h1>
+      <ul>
+        <li>Congrats Stanley on becoming a Player!</li>
+        <li>Congrats Aaron on becoming a Player!</li>
+        <li>Congrats John on becoming a Head Ref!</li>
+      </ul>
+    </div>
+
+    <script>
+      if (localStorage.getItem("loggedIn") !== "true") {
+        window.location.href = "/index.html";
+      }
+
+      const user = localStorage.getItem("username");
+      const db = JSON.parse(localStorage.getItem("usersDB"));
+      const info = db[user];
+
+      document.getElementById("welcome").innerText = "Hello, " + info.firstName;
+      document.getElementById("coins").innerText =
+        "SquadPoints: " + info.squadCoins;
+      document.getElementById("ranks").innerText =
+        "Ranks: " + info.ranks.join(", ");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "SquadGuy": {
+    "password": "password123",
+    "firstName": "John",
+    "squadCoins": 35,
+    "ranks": ["CEO", "Player", "Ref"]
+  },
+  "Admin": {
+    "password": "password123",
+    "firstName": "AdminMan",
+    "squadCoins": 9999,
+    "ranks": ["Owner", "Boss"]
+  }
+}
