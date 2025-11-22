@@ -1,14 +1,20 @@
 {
-  "SquadGuy": {
-    "password": "password123",
-    "firstName": "John",
+  "magictheguy": {
+    "password": "squadsquare123",
+    "firstName": "Lukas",
     "squadCoins": 35,
-    "ranks": ["CEO", "Player", "Ref"]
+    "ranks": ["CEO", "Player", "A-Square", "Promotion team", "Tournament manager"]
   },
   "Admin": {
     "password": "password123",
     "firstName": "AdminMan",
     "squadCoins": 9999,
     "ranks": ["Owner", "Boss"]
+  },
+  "dexter29": {
+    "password": "29 29 29"
+    "firstName": "Dexter",
+    "squadCoins": 0,
+    "ranks": ["Player"]
   }
 }
